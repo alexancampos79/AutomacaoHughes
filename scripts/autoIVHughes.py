@@ -3,13 +3,13 @@ import sys
 import datetime
 import configparser
 
-class ivBasic:
+class iv:
     
-    def __init__(self,ptipo,plibrary,pvista,pinstName):
-        self.tipo = ptipo
-        self.library = plibrary
+    def __init__(self,ppath,pvista,pinstName,pproperties):
+        self.path = ppath
         self.vista = pvista
         self.instName = pinstName
+        self.properties = pproperties
 
     def __del__(self):
         print('Deletando objeto IV')

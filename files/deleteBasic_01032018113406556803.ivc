@@ -1,0 +1,19 @@
+mode continue on;mode force on;
+query vista name = "NV3 IP Gateways";
+if ($vista = $null) begin
+	echo "error line 4: \"NV3 IP Gateways\", no such vista";
+	exit;
+end;
+assign $V_NV3 IP Gateways= $vista;
+
+query instance name = "IPGW-TESTE", vistas = [$V_NV3 IP Gateways];
+if ($vista = $null) begin
+	echo "error line 5: \"IPGW-TESTE\", no such instance";
+	exit;
+else
+	remove instance $instance;
+	if ($? <> $success) begin
+		echo "error line 5: Cannot remove instance \"IPGW-TESTE\"";
+		exit;
+	end;
+end;

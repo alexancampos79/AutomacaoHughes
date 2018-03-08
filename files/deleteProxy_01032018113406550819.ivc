@@ -1,0 +1,19 @@
+mode continue on;mode force on;
+query vista name = "NV3 Solutions VSATs";
+if ($vista = $null) begin
+	echo "error line 4: \"NV3 Solutions VSATs\", no such vista";
+	exit;
+end;
+assign $V_NV3 Solutions VSATs= $vista;
+
+query instance name = "PNT02309", vistas = [$V_NV3 Solutions VSATs];
+if ($vista = $null) begin
+	echo "error line 5: \"PNT02309\", no such instance";
+	exit;
+else
+	remove instance $instance;
+	if ($? <> $success) begin
+		echo "error line 5: Cannot remove instance \"PNT02309\"";
+		exit;
+	end;
+end;
